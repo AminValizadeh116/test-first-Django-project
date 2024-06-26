@@ -1,0 +1,25 @@
+{% extends 'parent/base.html' %}
+{% block title %} profile {% endblock %}
+{% block content %}
+<p><a href="{% url 'post:create_account' %}"> create custom account </a></p>
+<table style="width:80%; border: 2px solid black; text-align: left">
+    <tr>
+        <th> rew </th>
+        <th> post title </th>
+        <th> edit </th>
+        <th> delete </th>
+    </tr>
+    {% for post in posts %}
+    <tr>
+        <Td> {{ forloop.counter }} </Td>
+        <Td><a href="{% url 'post:post_detail' post.pk %}">{{ post.title }}</a></Td>
+        <Td><a href="{% url 'post:edit_post' post.pk %}" > edit </a></Td>
+        <Td><a href="{% url 'post:delete_post' post.pk %}"> delete </a></Td>
+    </tr>
+    {% endfor %}
+</table>
+{% include 'partials/pagination.html' with page=posts %}
+<p><a href="{% url 'post:create_post' %}"> create post </a></p>
+<br>
+<a href="{% url 'post:password_change' %}"> password change </a>
+{% endblock %}

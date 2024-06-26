@@ -1,0 +1,24 @@
+{% extends 'parent/base.html' %}
+{% block title %} post detail {% endblock %}
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.description|linebreaksbr }}</p>
+{% for image in post.images.all %}
+<img src="{{ image.image_file.url }}">
+{% endfor %}
+<center><FONT COLOR="#ff0000"> {{ post.updated_time| date }} </FONT></center>
+
+<h3> comments </h3>
+{% for c in comment %}
+{{ c.title }} by ({{ c.writer.username }})
+<br>
+{{ c.text }}
+<hr>
+{% endfor %}
+
+<form method="post" action="{% url 'post:comment' post.pk %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input value="submit" type="submit">
+</form>
+{% endblock %}

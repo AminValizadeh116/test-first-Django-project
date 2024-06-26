@@ -1,0 +1,12 @@
+{% extends 'parent/base.html' %}
+{% block title %} create post {% endblock %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input value="submit" type="submit">
+</form>
+{% for img in post.images.all %}
+<img src="{{ img.image_file.url }}">
+{% endfor %}
+{% endblock %}

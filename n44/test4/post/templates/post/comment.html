@@ -1,0 +1,13 @@
+{% extends 'parent/base.html' %}
+{% block title %} comment {% endblock %}
+{% block content %}
+{% if comment %}
+<h2>comment is posted successfully!</h2>
+<a href="{% url 'post:post_detail' post.pk %}">back to post</a>
+{% else %}
+<form method="post">
+    {{ form.as_p }}
+    <input value="post" type="submit">
+</form>
+{% endif %}
+{% endblock %}

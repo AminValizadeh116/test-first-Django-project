@@ -1,0 +1,10 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+<p> Do you really want to delete '{{ post.title }}' post? </p>
+<form method="post">
+    {% csrf_token %}
+    <input value="yes" type="submit">
+    <input value="no" type="submit">
+</form>
+{% endblock %}

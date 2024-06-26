@@ -1,0 +1,6 @@
+{% extends 'parent/base.html' %}
+{% block title %} register | done {% endblock %}
+{% block content %}
+<p> dear {{ user}}, you registered successfully!</p>
+<a href="{% url 'post:post_list' %}"> home/index </a>
+{% endblock %}

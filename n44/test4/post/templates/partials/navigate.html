@@ -1,0 +1,8 @@
+<div>
+{% load post_tags %}
+{% post_categories as categories %}
+{% for category in categories %}
+<h3><a href="{% url 'post:category' category %}"> {{ category }} </a></h3>
+{% endfor %}
+<hr>
+    </div>

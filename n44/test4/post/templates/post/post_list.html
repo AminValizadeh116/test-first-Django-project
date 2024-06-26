@@ -1,0 +1,15 @@
+{% extends 'parent/base.html' %}
+{% block title %} list {% endblock %}
+    {% block content %}
+<div style="display: flex; gap: 16px;">
+    {% for post in posts %}
+    <div style="width: 500px;">
+        <a href="{% url 'post:post_detail' post.id %}">{{ post.title }}</a>
+        <p>{{ post.description|truncatewords:5 }}</p>
+        <img src="{{ post.images.first.image_file.url }} " style="width: 350px; height:225px;">
+    </div>
+    {% endfor %}
+    <br>
+{% include 'partials/pagination.html' with page=posts %}
+</div>
+{% endblock %}
